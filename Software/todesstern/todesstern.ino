@@ -19,6 +19,7 @@ unsigned long themeMainTimer = 0;
 unsigned int themeSongCounter = 0;
 unsigned int themeSongActive = 0;
 
+unsigned int shakeCounter = 0;
 
 unsigned long rainbowRingTimer = 0;
 unsigned int rainbowRingCounter = 0;
@@ -58,6 +59,16 @@ void loop() {
     playtheme();
   }
   else {
+    if (digitalRead(shakePin) == LOW) {
+      shakeCounter++;
+      if (shakeCounter == 2) {
+        shakeSensor()
+        shakeCounter = 0;
+      }
+      else {
+        shakeCounter--;
+      } 
+    }
     redRing();
   }
 }

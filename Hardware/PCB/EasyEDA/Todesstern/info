@@ -1,0 +1,272 @@
+{
+  "uuid": "33feb18b60f31367094c25b40f12cac0",
+  "path": "Offline/Todesstern",
+  "name": "Todesstern",
+  "content": "",
+  "created_at": "2021-10-24 20:32:28",
+  "updated_at": "2021-11-17 02:40:22",
+  "stick": "",
+  "documents": [
+    {
+      "uuid": "a10ca6743dd71fa37c6af137cf4bf0ca",
+      "title": "Sheet_1",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "0742d5983a1448cdb4f783c33bed4c29": 1,
+        "ed9eb2faffb34286820a54a14e9e9e24": 2,
+        "4bd464e82e6d42e997ab76ace6f6ccd3": 5,
+        "245526444bbe85b260f4b99a6aa28864": 1,
+        "89026c0e23ca49dcb85d26a1d0805b33": 2,
+        "a6d79e8d9bf34a36beab49bbae690ea7": 1,
+        "25941d0a3007a8365e2032d4278dd8c0": 1,
+        "93fa30c1da8f482ba40b2a40a158f8ac": 1,
+        "6374c4bf7ab44411ab3d2161701d93d5": 1,
+        "3ec77201bbcd4ecd8722658d581a4e60": 2,
+        "2fd70ea7e5f44c868a4a4e172ac88241": 1,
+        "7c93ed99024141c0b5c38e0c928727be": 2
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "Piezo",
+          1,
+          "HDR-F-2.54_1X2",
+          "BUZZER",
+          {
+            "BOM_Supplier Part": "C49661",
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "",
+            "BOM_Manufacturer Part": "",
+            "puuid": "36b1306a115341f4b4d9407fb34974e0",
+            "uuid": "3ec77201bbcd4ecd8722658d581a4e60"
+          }
+        ],
+        [
+          "22u",
+          2,
+          "CASE-C_6032",
+          "C1,C4",
+          {
+            "BOM_Supplier Part": "",
+            "BOM_Supplier": "",
+            "BOM_Manufacturer Part": "",
+            "puuid": "2e3b51fe362d43e186fe7a3d3be61b85",
+            "uuid": "7c93ed99024141c0b5c38e0c928727be"
+          }
+        ],
+        [
+          "0.1u",
+          2,
+          "C0805",
+          "C2,C3",
+          {
+            "BOM_Supplier Part": "",
+            "BOM_Supplier": "",
+            "BOM_Manufacturer Part": "",
+            "puuid": "2ee8eb13a0124a108e622ce40c0c25a8",
+            "uuid": "89026c0e23ca49dcb85d26a1d0805b33"
+          }
+        ],
+        [
+          "SM4004",
+          1,
+          "MELF-MLL41_DO213AB",
+          "D1",
+          {
+            "BOM_Manufacturer Part": "",
+            "puuid": "7238b4b42e0d4c258bbf05becfd8e873",
+            "uuid": "2fd70ea7e5f44c868a4a4e172ac88241"
+          }
+        ],
+        [
+          "9V Batt",
+          1,
+          "HDR-F-2.54_1X2",
+          "H1",
+          {
+            "BOM_Supplier Part": "C49661",
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "",
+            "BOM_Manufacturer Part": "",
+            "puuid": "36b1306a115341f4b4d9407fb34974e0",
+            "uuid": "3ec77201bbcd4ecd8722658d581a4e60"
+          }
+        ],
+        [
+          "WS2812B-5050RGB",
+          5,
+          "LED-SMD_4P-L5.0-W5.0-BR_WS2812B-5050RGB",
+          "LED1,LED2,LED3,LED4,LED5",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C2838584",
+            "BOM_Manufacturer": "null",
+            "BOM_Manufacturer Part": "WS2812B-5050RGB",
+            "BOM_JLCPCB Part Class": "Extended Part",
+            "puuid": "9b383d81b26c44e4be134c2d1ba97009",
+            "uuid": "4bd464e82e6d42e997ab76ace6f6ccd3"
+          }
+        ],
+        [
+          "ext. LED",
+          1,
+          "HDR-TH_3P-P2.00-V-M",
+          "LED6",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C2905949",
+            "BOM_Manufacturer": "HCTL(华灿天禄)",
+            "BOM_Manufacturer Part": "PZ200-1-03-Z",
+            "puuid": "0a8bb826444a4d8cae3575532261adad",
+            "uuid": "a6d79e8d9bf34a36beab49bbae690ea7"
+          }
+        ],
+        [
+          "ISP",
+          1,
+          "IDC-TH_6P-P2.54_C11214",
+          "P1",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "BOOMELE",
+            "BOM_Manufacturer Part": "2X3 2.54mm IDC Box",
+            "BOM_Supplier Part": "C11214",
+            "puuid": "847fe177175048f3817aae6b5949e649",
+            "uuid": "25941d0a3007a8365e2032d4278dd8c0"
+          }
+        ],
+        [
+          "BCW65CLT1G",
+          1,
+          "SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR",
+          "Q1",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C232540",
+            "BOM_Manufacturer": "ON Semicon",
+            "BOM_Manufacturer Part": "BCW65CLT1G",
+            "BOM_JLCPCB Part Class": "Extended Part",
+            "puuid": "bade90667a6e4731855e9a223387b8a6",
+            "uuid": "93fa30c1da8f482ba40b2a40a158f8ac"
+          }
+        ],
+        [
+          "10k",
+          1,
+          "R0805",
+          "R1",
+          {
+            "BOM_Supplier Part": "",
+            "BOM_Supplier": "",
+            "BOM_Manufacturer Part": "",
+            "puuid": "b60f399a7a7e41848b2be1eb49c79141",
+            "uuid": "ed9eb2faffb34286820a54a14e9e9e24"
+          }
+        ],
+        [
+          "330R",
+          1,
+          "R0805",
+          "R2",
+          {
+            "BOM_Supplier Part": "",
+            "BOM_Supplier": "",
+            "BOM_Manufacturer Part": "",
+            "puuid": "b60f399a7a7e41848b2be1eb49c79141",
+            "uuid": "ed9eb2faffb34286820a54a14e9e9e24"
+          }
+        ],
+        [
+          "Shake",
+          1,
+          "SW2-12.7-12.0X3.6X3.6MM",
+          "SW1",
+          {
+            "BOM_Manufacturer Part": "SW-200D",
+            "puuid": "71dbca9d1a9049acbb571353b6efb2d8",
+            "uuid": "6374c4bf7ab44411ab3d2161701d93d5"
+          }
+        ],
+        [
+          "AMS1117-5.0",
+          1,
+          "SOT-223_L6.5-W3.5-P2.30-LS7.0-BR",
+          "U1",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "AMS",
+            "BOM_Manufacturer Part": "AMS1117-5.0",
+            "BOM_Supplier Part": "C6187",
+            "BOM_JLCPCB Part Class": "Basic Part",
+            "puuid": "4ca399a3887148eeab92cd3a98a855b3",
+            "uuid": "245526444bbe85b260f4b99a6aa28864"
+          }
+        ],
+        [
+          "ATTINY85-20SU",
+          1,
+          "SOIC-8_L5.3-W5.3-P1.27-LS8.0-BL",
+          "U2",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "MICROCHIP",
+            "BOM_Manufacturer Part": "ATTINY85-20SU",
+            "BOM_Supplier Part": "C89852",
+            "BOM_JLCPCB Part Class": "Extended Part",
+            "puuid": "fdf2396de7694c3e8177c1c94fe2bbcd",
+            "uuid": "0742d5983a1448cdb4f783c33bed4c29"
+          }
+        ]
+      ],
+      "updateTime": 1637106720,
+      "createTime": 1635106164,
+      "histories": [],
+      "created_at": "2021-10-24 22:09:24",
+      "updated_at": "2021-11-17 00:52:00"
+    },
+    {
+      "uuid": "84df906770838200728a04d6a73e4ccd",
+      "puuid": "33feb18b60f31367094c25b40f12cac0",
+      "title": "PCB_Todesstern",
+      "filename": "PCB_Todesstern.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "2ee8eb13a0124a108e622ce40c0c25a8": 2,
+        "7238b4b42e0d4c258bbf05becfd8e873": 1,
+        "36b1306a115341f4b4d9407fb34974e0": 2,
+        "bade90667a6e4731855e9a223387b8a6": 1,
+        "b60f399a7a7e41848b2be1eb49c79141": 2,
+        "71dbca9d1a9049acbb571353b6efb2d8": 1,
+        "fdf2396de7694c3e8177c1c94fe2bbcd": 1,
+        "9b383d81b26c44e4be134c2d1ba97009": 5,
+        "4ca399a3887148eeab92cd3a98a855b3": 1,
+        "2e3b51fe362d43e186fe7a3d3be61b85": 2,
+        "0a8bb826444a4d8cae3575532261adad": 1,
+        "847fe177175048f3817aae6b5949e649": 1
+      },
+      "BOM": [],
+      "updateTime": 1637113222,
+      "createTime": 1637100444,
+      "histories": [],
+      "created_at": "2021-11-16 23:07:24",
+      "updated_at": "2021-11-17 02:40:22"
+    }
+  ],
+  "sort": [],
+  "title": "Todesstern",
+  "foldername": "Todesstern",
+  "schfilename": "Todesstern.json",
+  "schfilemtime": 1637106720602
+}

@@ -1,6 +1,8 @@
 #include <Arduino.h>
 #include <avr/pgmspace.h>
 #include "FastLED.h"
+#include <avr/sleep.h>
+#include <avr/power.h>
 
 #include "song.h"
 
@@ -28,16 +30,20 @@ unsigned int rainbowRingCounter = 0;
 
 unsigned long laserTimer = 0;
 int laserCounter = 0;
-bool laserDirection = true; // Zählerrichtung true => aufsteigend
+bool laserDirection = true;
 
 
 CRGB leds[numLeds];
+
 
 void playtheme();
 void shakeSensor();
 void rgbRing();
 void redRing();
+void goToSleep();
 void TinyTone(unsigned char divisor, unsigned char octave);
+
+ISR (PCINT0_vect) {}
 
 void setup() {
   pinMode(buzzerPin, OUTPUT);
@@ -46,7 +52,10 @@ void setup() {
 
   FastLED.addLeds<WS2812, ledRingPin, RGB>(leds, numLeds);
   FastLED.setBrightness(brigtLeds);
-  //shakeSensor();
+
+  //PCMSK |= bit (PCINT2);
+  //GIFR  |= bit (PCIF); // clear any outstanding interrupts
+  //GIMSK |= bit (PCIE); // enable pin change interrupts
 }
 
 
@@ -59,9 +68,9 @@ void loop() {
   else {
     if (digitalRead(shakePin) == HIGH) {
       if (shakeState == true) {
-        if (shakeTime <= millis()) {
+        if (shakeTime < millis()) {
           shakeCounter++;
-          shakeTime = millis() + 100;
+          shakeTime = millis() + 50;
         }
         else {
           shakeCounter = 0;
@@ -80,6 +89,27 @@ void loop() {
     }
     redRing();
   }
+  if (millis() > 3600000) { //DeepSleep after 1hour
+    goToSleep();
+  }
+  
+}
+
+void goToSleep() {
+  leds[0] = CRGB(0,0,0);
+  leds[1] = CRGB(0,0,0);
+  leds[2] = CRGB(0,0,0);
+  leds[3] = CRGB(0,0,0);
+  leds[4] = CRGB(0,0,0);
+  leds[5] = CRGB(20,0,0);
+  FastLED.show();
+  set_sleep_mode(SLEEP_MODE_PWR_DOWN);
+  ADCSRA = 0;            // turn off ADC
+  power_all_disable();  // power off ADC, Timer 0 and 1, serial interface
+  sleep_enable();
+  sleep_cpu();
+  sleep_disable();
+  power_all_enable();    // power everything back on
 }
 
 void playtheme() {

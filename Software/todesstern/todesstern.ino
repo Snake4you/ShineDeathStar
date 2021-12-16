@@ -1,5 +1,4 @@
 #include <Arduino.h>
-//#include <WS2812.h>
 #include <avr/pgmspace.h>
 #include "FastLED.h"
 
@@ -14,26 +13,25 @@
 #define dataLeds 3
 #define brigtLeds 200
 
-bool themeMainActive = false;
+
 unsigned long themeMainTimer = 0;
 unsigned int themeSongCounter = 0;
 unsigned int themeSongActive = 0;
+bool themeMainActive = false;
 
 unsigned int shakeCounter = 0;
+unsigned long shakeTime = 0;
+bool shakeState = false;
 
 unsigned long rainbowRingTimer = 0;
 unsigned int rainbowRingCounter = 0;
 
 unsigned long laserTimer = 0;
-
 int laserCounter = 0;
 bool laserDirection = true; // Zählerrichtung true => aufsteigend
 
 
 CRGB leds[numLeds];
-
-//WS2812 LED(6);
-//cRGB value;
 
 void playtheme();
 void shakeSensor();
@@ -48,9 +46,7 @@ void setup() {
 
   FastLED.addLeds<WS2812, ledRingPin, RGB>(leds, numLeds);
   FastLED.setBrightness(brigtLeds);
-  //LED.setOutput(ledRingPin);
-  //LED.setColorOrderGRB();
-  shakeSensor();
+  //shakeSensor();
 }
 
 
@@ -58,16 +54,29 @@ void loop() {
   if (themeMainActive) {
     playtheme();
   }
+  //shakeTime
+  //shakeState
   else {
-    if (digitalRead(shakePin) == LOW) {
-      shakeCounter++;
-      if (shakeCounter == 2) {
-        shakeSensor()
-        shakeCounter = 0;
+    if (digitalRead(shakePin) == HIGH) {
+      if (shakeState == true) {
+        if (shakeTime <= millis()) {
+          shakeCounter++;
+          shakeTime = millis() + 100;
+        }
+        else {
+          shakeCounter = 0;
+        }
+        shakeState = false;
+        if (shakeCounter >= 2) {
+          shakeSensor();
+          shakeCounter = 0;
+        }
       }
-      else {
-        shakeCounter--;
-      } 
+    }
+    if (digitalRead(shakePin) == LOW) {
+      if (shakeState == false) {
+        shakeState = true;
+      }
     }
     redRing();
   }
@@ -87,8 +96,6 @@ void playtheme() {
         OffTone();
       }
       themeMainTimer = millis() + tmpTheme[2];
-
-      
       themeSongCounter++;
       themeSongActive = 1;
       rgbRing();
@@ -99,7 +106,6 @@ void playtheme() {
       themeSongActive = 0;
       if (themeSongCounter >= 73) {
         themeMainActive = false;
-        //digitalWrite(buzzerPin, LOW);
       }
     }
   }
@@ -167,92 +173,65 @@ void redRing() {
   unsigned int value = 0;
   if (millis() >= rainbowRingTimer) {
     rainbowRingCounter++;
-    //value.b = 0;
-    //value.g = 0;
     switch (rainbowRingCounter) {
     case 1:
       value = 0;
-      //LED.set_crgb_at(0, value);
       leds[0] = CRGB(value,0,0);
-      value = 30;
-      //LED.set_crgb_at(4, value);
+      value = 0;
       leds[4] = CRGB(value,0,0);
-      value = 100;
-      //LED.set_crgb_at(3, value);
+      value = 130;
       leds[3] = CRGB(value,0,0);
-      value = 30;
-      //LED.set_crgb_at(2, value);
+      value = 0;
       leds[2] = CRGB(value,0,0);
       value = 0;
-      //LED.set_crgb_at(1, value);
       leds[1] = CRGB(value,0,0);
       break;
     case 2:
       value = 0;
-      //LED.set_crgb_at(1, value);
       leds[1] = CRGB(value,0,0);
-      value = 30;
-      //LED.set_crgb_at(0, value);
+      value = 0;
       leds[0] = CRGB(value,0,0);
-      value = 100;
-      //LED.set_crgb_at(4, value);
+      value = 130;
       leds[4] = CRGB(value,0,0);
-      value = 30;
-      //LED.set_crgb_at(3, value);
+      value = 0;
       leds[3] = CRGB(value,0,0);
       value = 0;
-      //LED.set_crgb_at(2, value);
       leds[2] = CRGB(value,0,0);
       break;
     case 3:
       value = 0;
-      //LED.set_crgb_at(2, value);
       leds[2] = CRGB(value,0,0);
-      value = 30;
-      //LED.set_crgb_at(1, value);
+      value = 0;
       leds[1] = CRGB(value,0,0);
-      value = 100;
-      //LED.set_crgb_at(0, value);
+      value = 130;
       leds[0] = CRGB(value,0,0);
-      value = 30;
-      //LED.set_crgb_at(4, value);
+      value = 0;
       leds[4] = CRGB(value,0,0);
       value = 0;
-      //LED.set_crgb_at(3, value);
       leds[3] = CRGB(value,0,0);
       break;
     case 4:
       value = 0;
-      //LED.set_crgb_at(3, value);
       leds[3] = CRGB(value,0,0);
-      value = 30;
-      //LED.set_crgb_at(2, value);
+      value = 0;
       leds[2] = CRGB(value,0,0);
-      value = 100;
-      //LED.set_crgb_at(1, value);
+      value = 130;
       leds[1] = CRGB(value,0,0);
-      value = 30;
-      //LED.set_crgb_at(0, value);
+      value = 0;
       leds[0] = CRGB(value,0,0);
       value = 0;
-      //LED.set_crgb_at(4, value);
       leds[4] = CRGB(value,0,0);
       break;
     case 5:
       value = 0;
-      //LED.set_crgb_at(4, value);
       leds[4] = CRGB(value,0,0);
-      value = 30;
-      //LED.set_crgb_at(3, value);
+      value = 0;
       leds[3] = CRGB(value,0,0);
-      value = 100;
-      //LED.set_crgb_at(2, value);
+      value = 130;
       leds[2] = CRGB(value,0,0);
-      value = 30;
-      //LED.set_crgb_at(1, value);
+      value = 0;
       leds[1] = CRGB(value,0,0);
       value = 0;
-      //LED.set_crgb_at(0, value);
       leds[0] = CRGB(value,0,0);
       rainbowRingCounter = 0;
       break;
@@ -262,8 +241,7 @@ void redRing() {
     }
     
     if (laserDirection == true) {
-      if (laserCounter >= 220) {
-          //laserCounter = 255;
+      if (laserCounter >= 150) {
           laserDirection = false;
       }
       else {
@@ -272,18 +250,13 @@ void redRing() {
     }
     else {
       if (laserCounter <= 10) {
-          //laserCounter = 100;
           laserDirection = true;
       }
       else {
         laserCounter = laserCounter - 10;
       }
     }
-    //value.b = 0; 
     value = laserCounter; 
-    //value.r = 0;
-    //LED.set_crgb_at(5, value);
-    //LED.sync();
     leds[5] = CRGB(0,value,0);
     FastLED.show();
     rainbowRingTimer = millis() + 250;
